@@ -13,6 +13,7 @@ import Services from './pages/Services';
 import CustomModal from './components/CustomModal/CustomModal';
 import NotFound from './pages/NotFound';
 import ThankYou from './pages/ThankYou';
+import ScrollToTop from './components/ScrollTop/ScrollToTop';
 
 const App = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,6 +30,7 @@ const App = () => {
 
     return (
         <>
+            <ScrollToTop />
             <header>
                 <Navbar />
             </header>
@@ -54,8 +56,8 @@ const App = () => {
                 <Route path='/genre/self-help' element={<Services openModal={toggleModal} />} />
 
                 {/* 404 error */}
+                <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="*" element={<NotFound />} />
-                <Route path="thank-you" element={<ThankYou />} />
 
             </Routes>
 
