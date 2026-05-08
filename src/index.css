@@ -103,13 +103,43 @@
 
   --secondary: #298864;
   --secondary-gradient: linear-gradient(296.99deg, #164936 10.62%, #35AF81 152.6%);
-  border-radius: 60px;
 
+}
+
+
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
   background: #f8f9fa !important;
   color: #000;
+
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 3. If you have sections with gaps, ensure they use proper padding */
+section {
+  position: relative;
+  overflow: hidden;
+  /* Prevents 3D elements from creating a horizontal gap */
 }
 
 h2 {

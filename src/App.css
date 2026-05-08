@@ -704,7 +704,7 @@ header {
     top: 0;
     left: 0;
     /* animation: scrollImage 3s linear infinite; */
-    animation: scrollImage 3s ease-in-out infinite alternate;
+    /* animation: scrollImage 3s ease-in-out infinite alternate; */
   }
 }
 

@@ -5,9 +5,18 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // This moves the window back to the top-left (0,0) coordinate
+    // 1. Standard browser scroll
     window.scrollTo(0, 0);
-  }, [pathname]); // This runs every time the URL path changes
+    
+    // 2. Lenis scroll (with a slight delay to ensure the page has rendered)
+    const timer = setTimeout(() => {
+        if (window.lenis) {
+            window.lenis.scrollTo(0, { immediate: true });
+        }
+    }, 10);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   return null;
 };

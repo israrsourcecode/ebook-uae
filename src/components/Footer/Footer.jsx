@@ -10,14 +10,16 @@ const Footer = () => {
             <div className="col-12 col-md-6 col-lg-4">
               <div className="footer-data">
                 <div className="footer-logo">
-                  <img className='img-fluid' src={footerLogo} alt="" />
+                  <Link to={'/'}>
+                    <img className='img-fluid' src={footerLogo} alt="" />
+                  </Link>
                 </div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
                 <div className="footer-icons">
-                  <NavLink to={''}><i className="ri-linkedin-fill"></i></NavLink>
-                  <NavLink to={''}><i className="ri-twitter-x-line"></i></NavLink>
-                  <NavLink to={''}><i className="ri-instagram-line"></i></NavLink>
-                  <NavLink to={''}><i className="ri-facebook-fill"></i></NavLink>
+                  <Link to={''}><i className="ri-linkedin-fill"></i></Link>
+                  <Link to={''}><i className="ri-twitter-x-line"></i></Link>
+                  <Link to={''}><i className="ri-instagram-line"></i></Link>
+                  <Link to={''}><i className="ri-facebook-fill"></i></Link>
                 </div>
               </div>
             </div>

@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom';
+import Lenis from '@studio-freight/lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css'
 import Home from './pages/Home';
 import About from './pages/About';
@@ -15,6 +18,9 @@ import NotFound from './pages/NotFound';
 import ThankYou from './pages/ThankYou';
 import ScrollToTop from './components/ScrollTop/ScrollToTop';
 
+
+// Register ScrollTrigger if you are using it for other animations
+gsap.registerPlugin(ScrollTrigger);
 const App = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => setIsModalOpen(!isModalOpen);
@@ -25,9 +31,29 @@ const App = () => {
             once: true,     // run only once
         });
     }, []);
+    useEffect(() => {
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+    });
 
+    window.lenis = lenis; // Make global
 
+    // Use a named function for the animation frame
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
 
+    const rafId = requestAnimationFrame(raf);
+
+    return () => {
+        lenis.destroy();
+        cancelAnimationFrame(rafId); // Clean up the frame request
+        window.lenis = null;
+    };
+}, []);
     return (
         <>
             <ScrollToTop />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Nav, Navbar as BootstrapNavbar, NavDropdown } from 'react-bootstrap';
-import { NavLink, useLocation } from 'react-router-dom'; // Use NavLink for active states
+import { Link, NavLink, useLocation } from 'react-router-dom'; // Use NavLink for active states
 import Logo from './../../../assets/images/Logo.webp'
 import './Navbar.css';
 
@@ -30,7 +30,7 @@ function Navbar() {
       <Container>
         <BootstrapNavbar.Brand as={NavLink} to="/" className="fw-bold fs-3 text-white">
           <div className="Nav-Logo">
-            <img className='img-fluid' src={Logo} alt="Logo" />
+              <img className='img-fluid' src={Logo} alt="Logo" />
           </div>
         </BootstrapNavbar.Brand>
 
@@ -62,8 +62,8 @@ function Navbar() {
               title="GENRE"
               id="basic-nav-dropdown"
               show={showGenre}
-              onMouseEnter={()=>setShowGenre(true)}
-              onMouseLeave={()=>setShowGenre(false)}
+              onMouseEnter={() => setShowGenre(true)}
+              onMouseLeave={() => setShowGenre(false)}
               className={isGenreActive ? "active" : ""}
             >
               <NavDropdown.Item as={NavLink} to="/genre/autobiography">Autobiography</NavDropdown.Item>
