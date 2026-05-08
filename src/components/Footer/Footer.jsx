@@ -1,3 +1,4 @@
+import { Link, NavLink } from 'react-router-dom'
 import footerLogo from '../../assets/images/Logo.webp'
 const Footer = () => {
   return (
@@ -13,10 +14,10 @@ const Footer = () => {
                 </div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
                 <div className="footer-icons">
-                  <a href="#"><i className="ri-linkedin-fill"></i></a>
-                  <a href="#"><i className="ri-twitter-x-line"></i></a>
-                  <a href="#"><i className="ri-instagram-line"></i></a>
-                  <a href="#"><i className="ri-facebook-fill"></i></a>
+                  <NavLink to={''}><i className="ri-linkedin-fill"></i></NavLink>
+                  <NavLink to={''}><i className="ri-twitter-x-line"></i></NavLink>
+                  <NavLink to={''}><i className="ri-instagram-line"></i></NavLink>
+                  <NavLink to={''}><i className="ri-facebook-fill"></i></NavLink>
                 </div>
               </div>
             </div>
@@ -25,40 +26,40 @@ const Footer = () => {
                 <div className="footer-nav-box">
                   <h4>Quick Links</h4>
                   <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><NavLink to={'/'}>Home</NavLink></li>
+                    <li><NavLink to={'/about'}>About Us</NavLink></li>
+                    <li><NavLink to={'/contact-us'}>Contact Us</NavLink></li>
                   </ul>
                 </div>
                 <div className="footer-nav-box">
                   <h4>Services</h4>
                   <ul>
-                    <li><a href="#">eBook Cover Design</a></li>
-                    <li><a href="#">eBook Editing</a></li>
-                    <li><a href="#">eBook Writng</a></li>
-                    <li><a href="#">eBook Publishing</a></li>
-                    <li><a href="#">eBook Marketing</a></li>
+                    <li><NavLink to={'/services/ebook-cover-design'}>eBook Cover Design</NavLink></li>
+                    <li><NavLink to={'/services/ebook-editing'}>eBook Editing</NavLink></li>
+                    <li><NavLink to={'/services/ebook-writng'}>eBook Writng</NavLink></li>
+                    <li><NavLink to={'/services/ebook-publishing'}>eBook Publishing</NavLink></li>
+                    <li><NavLink to={'/services/ebook-marketing'}>eBook Marketing</NavLink></li>
                   </ul>
                 </div>
                 <div className="footer-nav-box">
                   <h4>Genre</h4>
                   <ul>
-                    <li><a href="#">Autobiography</a></li>
-                    <li><a href="#">Business Book</a></li>
-                    <li><a href="#">Children’s Book</a></li>
-                    <li><a href="#">Fiction</a></li>
-                    <li><a href="#">Mystery Book</a></li>
-                    <li><a href="#">Non Fiction</a></li>
-                    <li><a href="#">Novel</a></li>
-                    <li><a href="#">Self Help</a></li>
+                    <li><NavLink to={'/genre/autobiography'}>Autobiography</NavLink></li>
+                    <li><NavLink to={'/genre/business-book'}>Business Book</NavLink></li>
+                    <li><NavLink to={'/genre/childrens-book'}>Children’s Book</NavLink></li>
+                    <li><NavLink to={'/genre/fiction'}>Fiction</NavLink></li>
+                    <li><NavLink to={'/genre/mystery-book'}>Mystery Book</NavLink></li>
+                    <li><NavLink to={'/genre/non-fiction'}>Non Fiction</NavLink></li>
+                    <li><NavLink to={'/genre/novel'}>Novel</NavLink></li>
+                    <li><NavLink to={'/genre/self-help'}>Self Help</NavLink></li>
                   </ul>
                 </div>
                 <div className="footer-nav-box">
                   <h4>Contact Us</h4>
                   <ul>
-                    <li><a href="#">Dummy</a></li>
-                    <li><a href="#">(0000)00000-000</a></li>
-                    <li><a href="#">xyz@addreess</a></li>
+                    <li><Link >Dummy</Link></li>
+                    <li><Link >(0000)00000-000</Link></li>
+                    <li><Link >xyz@addreess</Link></li>
                   </ul>
                 </div>
               </div>

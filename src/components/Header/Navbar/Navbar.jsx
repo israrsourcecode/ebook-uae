@@ -80,10 +80,10 @@ function Navbar() {
           </Nav>
 
           <div className="d-flex social-icons ms-auto">
-            <a href="#"><i className="ri-linkedin-fill"></i></a>
-            <a href="#"><i className="ri-twitter-x-line"></i></a>
-            <a href="#"><i className="ri-instagram-line"></i></a>
-            <a href="#"><i className="ri-facebook-fill"></i></a>
+            <Nav.Link href="#"><i className="ri-linkedin-fill"></i></Nav.Link>
+            <Nav.Link href="#"><i className="ri-twitter-x-line"></i></Nav.Link>
+            <Nav.Link href="#"><i className="ri-instagram-line"></i></Nav.Link>
+            <Nav.Link href="#"><i className="ri-facebook-fill"></i></Nav.Link>
           </div>
         </BootstrapNavbar.Collapse>
       </Container>
