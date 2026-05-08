@@ -1,4 +1,7 @@
 import React from 'react'
+import { useLayoutEffect, useRef } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from 'gsap';
 import Seo from '../components/Common/Seo'
 import Hero from '../components/Hero/Hero'
 import Btn from '../components/Common/Btn'
@@ -72,36 +75,82 @@ const Home = ({ openModal }) => {
             icon: <i className="ri-git-repository-fill"></i>,
         },
     ]
+    const heroRef = useRef(null);
+
+    useLayoutEffect(() => {
+        let ctx = gsap.context(() => {
+            const tl = gsap.timeline({
+                // ScrollTrigger stays here
+                scrollTrigger: {
+                    trigger: heroRef.current,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none none",
+                },
+                // Move defaults OUT of scrollTrigger
+                defaults: { ease: "power3.out", duration: 1 }
+            });
+
+            tl.from(".hero-main-heading", {
+                y: -50,
+                opacity: 0
+            })
+                .from(".hero-heading h1", {
+                    y: -20,
+                    opacity: 0,
+                    // duration: 1.2
+                }, "-=0.5")
+                .from(".hero-bottom-data-img img", {
+                    y: -20,           // Move up 20 pixels
+                    duration: 1.5,    // Take 1.5 seconds
+                    repeat: -1,       // Repeat forever
+                    yoyo: true,       // Go back and forth (up -> down -> up)
+                    ease: "power1.inOut" // Makes the turn at the top/bottom smooth
+                })
+                .from(".hero-bottom-data-left", {
+                    x: -100,
+                    opacity: 0,
+                }, "<")
+                .from(".hero-bottom-data-right", {
+                    x: 100,
+                    opacity: 0,
+                }, "<");
+
+        }, heroRef);
+
+        return () => ctx.revert();
+    }, []);
     return (
         <>
             <Seo title="Home" description="Welcome to homepage" />
-            <Hero MainHeading={"New Author book"} name={"primary-hero"} Content={<>
-                <div className="row">
-                    <div className="col-12 col-md-6 col-lg-3">
-                        <div className="hero-bottom-data-left">
-                            <p>Lorem ipsum dolor sit <span>amet consectetur</span> adipiscing elit Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
-                            <Btn onClick={openModal} text="Lorem ipsum" name="primary" />
-                        </div>
-                    </div>
-                    <div className="col-12 col-md-8 col-lg-6">
-                        <div className="hero-bottom-data-img">
-                            <img className='img-fluid' src={HeroHomeImg} alt="" />
-                        </div>
-                    </div>
-                    <div className="col-12 col-md-6 col-lg-3">
-                        <div className="hero-bottom-data-right">
-                            <div className="hero-bottom-top-quote">
-                                <i className="ri-double-quotes-l"></i>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                            <div className="hero-bottom-bottom-quote">
-                                <i className="ri-double-quotes-r"></i>
+            <div ref={heroRef}>
+                <Hero MainHeading={"New Author book"} name={"primary-hero"} Content={<>
+                    <div className="row">
+                        <div className="col-12 col-md-6 col-lg-3">
+                            <div className="hero-bottom-data-left">
+                                <p>Lorem ipsum dolor sit <span>amet consectetur</span> adipiscing elit Lorem ipsum dolor, sit amet consectetur adipisicing elit. </p>
+                                <Btn onClick={openModal} text="Lorem ipsum" name="primary" />
                             </div>
                         </div>
+                        <div className="col-12 col-md-8 col-lg-6">
+                            <div className="hero-bottom-data-img">
+                                <img className='img-fluid' src={HeroHomeImg} alt="" />
+                            </div>
+                        </div>
+                        <div className="col-12 col-md-6 col-lg-3">
+                            <div className="hero-bottom-data-right">
+                                <div className="hero-bottom-top-quote">
+                                    <i className="ri-double-quotes-l"></i>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <div className="hero-bottom-bottom-quote">
+                                    <i className="ri-double-quotes-r"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </>} />
-
+                </>} />
+            </div>
             <Brands />
 
             <section className='ServicesCard'>
@@ -129,7 +178,7 @@ const Home = ({ openModal }) => {
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
                 </div>
                 {/* <Container> */}
-                    <ReviewCard data={reviewData} />
+                <ReviewCard data={reviewData} />
                 {/* </Container> */}
             </section>
 
