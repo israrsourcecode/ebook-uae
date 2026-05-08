@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { Button, Col, Container, Form, Row } from "react-bootstrap"
 
@@ -25,6 +26,7 @@ const schema = yup.object().shape({
         .max(500, 'Message cannot exceed 500 characters'), // Validation limit
 });
 const FooterFormMain = () => {
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -36,14 +38,9 @@ const FooterFormMain = () => {
     });
 
     const onSubmit = (data) => {
-        // 1. Log the data to the console for testing
-        console.log("Form submitted successfully:", data);
-
-        // 2. Show a simple alert to the user
-        alert("Form validation passed! (Data was not sent to a server)");
-
-        // 3. Reset the form fields
+        console.log("Form submitted:", data);
         reset();
+        navigate('/thank-you'); // 3. Redirect here
     };
     return (
         <>
