@@ -128,9 +128,9 @@ const Home = ({ openModal }) => {
                     <h2>Lorem ipsum dolor</h2>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
                 </div>
-                <Container>
+                {/* <Container> */}
                     <ReviewCard data={reviewData} />
-                </Container>
+                {/* </Container> */}
             </section>
 
             <Counter />

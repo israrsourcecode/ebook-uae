@@ -576,12 +576,24 @@ header {
 
 .reviewSlider {
   width: 100%;
-  padding: 50px 0;
+  padding: 50px 4px;
 
 }
 
+.swiper-wrapper {
+  /* This ensures the movement is constant and doesn't 'jump' between slides */
+  transition-timing-function: linear !important;
+}
+
+.reviewSlider .swiper-slide {
+  margin-top: 0;
+  transition: all 0.5s ease;
+  transform: translateY(0);
+}
+
 .reviewSlider .swiper-slide:nth-child(even) {
-  margin-top: -40px;
+  transition: all 0.5s ease;
+  transform: translateY(-40px);
 }
 
 .reviewCard {

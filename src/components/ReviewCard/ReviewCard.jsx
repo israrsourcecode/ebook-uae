@@ -13,8 +13,10 @@ const ReviewCard = ({ data }) => {
       <Swiper
         modules={[Autoplay]}
         loop={true}
+        speed={4000} // Adjust this: Higher = Slower, Lower = Faster
+        allowTouchMove={false} // Optional: prevents user from breaking the flow
         autoplay={{
-          delay: 2500, // Adjusted to be less aggressive than 1000
+          delay: 0, // 0 delay for continuous motion
           disableOnInteraction: false,
         }}
         // --- BREAKPOINTS START ---
@@ -34,7 +36,7 @@ const ReviewCard = ({ data }) => {
           // When window width is >= 1440px (Large Screens)
           1440: {
             slidesPerView: 4,
-            spaceBetween: 50,
+            spaceBetween: 60,
           },
         }}
         // --- BREAKPOINTS END ---
