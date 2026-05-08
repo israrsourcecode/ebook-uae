@@ -68,6 +68,9 @@ header {
 .navbar-expand-lg .navbar-nav .show>.dropdown-menu {
   visibility: visible;
   opacity: 1;
+  text-align: center;
+  padding: 12px 11px;
+  transform: translateX(-10%);
 }
 
 .navbar-expand-lg .navbar-nav .dropdown-menu {
@@ -89,6 +92,7 @@ header {
   .dropdown-item:focus, .dropdown-item.active, .dropdown-item:active, .dropdown-item:hover {
     color: #fff;
     background: var(--secondary-gradient);
+    border-radius: 20px;
   }
 
 }
