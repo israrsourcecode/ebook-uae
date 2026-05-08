@@ -7,7 +7,6 @@ import './App.css'
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Aos from 'aos';
 import Footer from './components/Footer/Footer';
 import Navbar from './components/Header/Navbar/Navbar';
 import NavbarCenter from './components/Header/Navbar/Navbar';
@@ -25,12 +24,7 @@ const App = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => setIsModalOpen(!isModalOpen);
 
-    // useEffect(() => {
-    //     Aos.init({
-    //         duration: 1000, // animation speed
-    //         once: true,     // run only once
-    //     });
-    // }, []);
+    
     useEffect(() => {
     const lenis = new Lenis({
         duration: 1.2,
