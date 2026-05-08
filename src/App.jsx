@@ -25,12 +25,12 @@ const App = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const toggleModal = () => setIsModalOpen(!isModalOpen);
 
-    useEffect(() => {
-        Aos.init({
-            duration: 1000, // animation speed
-            once: true,     // run only once
-        });
-    }, []);
+    // useEffect(() => {
+    //     Aos.init({
+    //         duration: 1000, // animation speed
+    //         once: true,     // run only once
+    //     });
+    // }, []);
     useEffect(() => {
     const lenis = new Lenis({
         duration: 1.2,
