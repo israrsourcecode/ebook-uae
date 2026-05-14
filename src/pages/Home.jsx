@@ -167,29 +167,27 @@ const Home = ({ openModal }) => {
                 ease: "power1.inOut"
             });
 
-            gsap.from(".footerFrom .footerFormLeft img", {
+            // --- FOOTER SECTION TIMELINE ---
+            const footerTl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: ".footerFrom", // Triggering when the footer itself appears
+                    trigger: ".footerFrom", // The main container
                     start: "top 80%",
                     toggleActions: "play none none none",
-                },
-                y: 40,      // Starts 40px higher than original
-                opacity: 0,  // Starts invisible
-                duration: 1,
-                ease: "power2.out" // Smooth finish
+                }
             });
 
-            gsap.from(".footerFrom .footerFormData", {
-                scrollTrigger: {
-                    trigger: ".footerFrom", // Triggering when the footer itself appears
-                    start: "top 80%",
-                    toggleActions: "play none none none",
-                },
-                y: 40,      // Starts 40px higher than original
-                opacity: 0,  // Starts invisible
+            footerTl.from(".footerFrom .footerFormLeft img", {
+                y: 40,            // Slides UP from 40px below
+                opacity: 0,
                 duration: 1,
-                ease: "power2.out" // Smooth finish
-            });
+                ease: "power2.out"
+            })
+                .from(".footerFrom .footerFormData", {
+                    y: 40,            // Slides UP from 40px below
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                }, "-=0.7"); // This "-=0.7" creates a slight overlap so they feel connected
 
         }, mainRef);
 

@@ -389,9 +389,11 @@ header {
 }
 
 .ServicesCardMain {
-    min-height: 100px; /* Ensures the trigger has a physical area */
-    display: flex;     /* Or grid */
-    flex-wrap: wrap;
+  min-height: 100px;
+  /* Ensures the trigger has a physical area */
+  display: flex;
+  /* Or grid */
+  flex-wrap: wrap;
 }
 
 .ServiceCard {
@@ -402,7 +404,7 @@ header {
   max-width: 600px;
   transition: all 0.3s ease-in-out;
 
-  
+
   .ServicesCardIcon {
     padding: 20px 10px;
 
@@ -513,8 +515,9 @@ header {
 
 /* Adjust the book's position */
 .book-img-container {
-  width: 1005;
-
+  width: 73%;
+  margin: auto;
+  margin-left: 0;
 }
 
 /* Orange Pill Button */

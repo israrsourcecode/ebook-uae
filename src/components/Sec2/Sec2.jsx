@@ -1,9 +1,10 @@
 
 import secImg from "../../assets/images/sec-2.webp"
 import RightImg from "../../assets/images/sec-2-bg.webp"
+import imgShadow from '../../assets/images/hero-shadow.webp'
 import Btn from "../Common/Btn"
 import { Col, Container, Row } from "react-bootstrap"
-const Sec2 = ({ Img = secImg, openModal}) => {
+const Sec2 = ({ Img = secImg, openModal }) => {
     return (
         <section className="book-info-section">
             <div className="heading center">
@@ -15,11 +16,16 @@ const Sec2 = ({ Img = secImg, openModal}) => {
                     {/* Left Side: Stays within grid alignment */}
                     <Col lg={6} md={12} xs={12} className="d-flex justify-content-end pe-lg-5">
                         <div className="book-img-container">
-                            <img
-                                src={Img}
-                                alt="Book"
-                                className="img-fluid"
-                            />
+                            <div className="book-img-book">
+                                <img
+                                    src={Img}
+                                    alt="Book"
+                                    className="img-fluid"
+                                />
+                            </div>
+                            <div className="book-img-shadow">
+                                <img className="img-fluid" src={imgShadow} alt="" />
+                            </div>
                         </div>
                     </Col>
 
