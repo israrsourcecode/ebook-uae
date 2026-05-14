@@ -1,7 +1,7 @@
 import ServicesCardImg from '../../assets/images/servicesCard1.webp'
 const ServicesCard = ({heading, para, img, icon}) => {
     return (
-        <div className="Servicecard">
+        <div className="ServiceCard">
             <div className="ServicesCardIcon">
                {icon}
             </div>

@@ -6,6 +6,7 @@ import Seo from '../components/Common/Seo'
 import Hero from '../components/Hero/Hero'
 import Btn from '../components/Common/Btn'
 import HeroHomeImg from "../assets/images/hero-home.webp"
+import HeroHomeImgCircle from "../assets/images/hero-shadow.webp"
 import Brands from '../components/Brands/Brands'
 import ServicesCard from '../components/ServicesCard/ServicesCard'
 import ServicesCardImg1 from '../assets/images/servicesCard1.webp'
@@ -75,55 +76,133 @@ const Home = ({ openModal }) => {
             icon: <i className="ri-git-repository-fill"></i>,
         },
     ]
-    const heroRef = useRef(null);
+    const mainRef = useRef(null);
 
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
-            const tl = gsap.timeline({
-                // ScrollTrigger stays here
-                scrollTrigger: {
-                    trigger: heroRef.current,
-                    start: "top 80%",
-                    end: "bottom 20%",
-                    toggleActions: "play none none none",
-                },
-                // Move defaults OUT of scrollTrigger
-                defaults: { ease: "power3.out", duration: 1 }
+
+            const headings = gsap.utils.toArray(".heading.center");
+            headings.forEach((heading) => {
+                gsap.from(heading, {
+                    scrollTrigger: {
+                        trigger: heading,      // The heading triggers itself
+                        start: "top 90%",      // Starts when the individual heading hits 90% of viewport
+                        toggleActions: "play none none none",
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                });
             });
 
-            tl.from(".hero-main-heading", {
-                y: -50,
-                opacity: 0
-            })
-                .from(".hero-heading h1", {
-                    y: -20,
-                    opacity: 0,
-                    // duration: 1.2
-                }, "-=0.5")
-                .from(".hero-bottom-data-img img", {
-                    y: -20,           // Move up 20 pixels
-                    duration: 1.5,    // Take 1.5 seconds
-                    repeat: -1,       // Repeat forever
-                    yoyo: true,       // Go back and forth (up -> down -> up)
-                    ease: "power1.inOut" // Makes the turn at the top/bottom smooth
-                })
-                .from(".hero-bottom-data-left", {
-                    x: -100,
-                    opacity: 0,
-                }, "<")
-                .from(".hero-bottom-data-right", {
-                    x: 100,
-                    opacity: 0,
-                }, "<");
+            // --- HERO ANIMATION ---
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".primary-hero",
+                    start: "top 80%",
+                    toggleActions: "play none none none",
+                }
+            });
 
-        }, heroRef);
+            tl.from(".hero-heading", { y: -50, opacity: 0 })
+                .from(".hero-heading h1", { y: -20, opacity: 0 }, "=0.6")
+                .from(".hero-bottom-data-left", { x: -100, opacity: 0 }, "<")
+                // .from(".hero-bottom-data-images ", { scale: 0, opacity: 0, ease: "back.out(1.6)", duration: 1, stagger: 0.8 }, "<")
+                .from(".hero-bottom-data-right", { x: 100, opacity: 0 }, "<");
+
+            // --- INFINITE ANIMATIONS ---
+            gsap.to(".hero-bottom-data-img img", {
+                y: -20,
+                duration: 1.5,
+                repeat: -1,
+                yoyo: true,
+                ease: "power1.inOut"
+            });
+
+            gsap.to(".hero-bottom-data-shadow img", {
+                scale: 0.8,
+                opacity: 0.5,
+                duration: 1.5,
+                repeat: -1,
+                yoyo: true,
+                ease: "power1.inOut"
+            });
+
+
+
+            gsap.fromTo(".ServiceCard",
+                {
+                    y: 50,
+                    opacity: 0
+                },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    stagger: 0.2,
+                    scrollTrigger: {
+                        trigger: ".ServicesCardMain",
+                        start: "top 85%",
+
+                    }
+                }
+            );
+
+            // Section 3
+            gsap.from(".sec3Data", {
+                scrollTrigger: {
+                    trigger: ".sec3",
+                    start: "top 80%",
+                },
+                x: 40,
+                opacity: 0,
+                duration: 1
+            });
+            // Floating Sec3 Image (Kept separate from reveal so it doesn't block)
+            gsap.to(".sec3Img img", {
+                y: -20,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "power1.inOut"
+            });
+
+            gsap.from(".footerFrom .footerFormLeft img", {
+                scrollTrigger: {
+                    trigger: ".footerFrom", // Triggering when the footer itself appears
+                    start: "top 80%",
+                    toggleActions: "play none none none",
+                },
+                y: 40,      // Starts 40px higher than original
+                opacity: 0,  // Starts invisible
+                duration: 1,
+                ease: "power2.out" // Smooth finish
+            });
+
+            gsap.from(".footerFrom .footerFormData", {
+                scrollTrigger: {
+                    trigger: ".footerFrom", // Triggering when the footer itself appears
+                    start: "top 80%",
+                    toggleActions: "play none none none",
+                },
+                y: 40,      // Starts 40px higher than original
+                opacity: 0,  // Starts invisible
+                duration: 1,
+                ease: "power2.out" // Smooth finish
+            });
+
+        }, mainRef);
 
         return () => ctx.revert();
     }, []);
+
+
+
+
     return (
         <>
             <Seo title="Home" description="Welcome to homepage" />
-            <div ref={heroRef}>
+            <div ref={mainRef}>
                 <Hero MainHeading={"New Author book"} name={"primary-hero"} Content={<>
                     <div className="row">
                         <div className="col-12 col-md-6 col-lg-3">
@@ -133,8 +212,13 @@ const Home = ({ openModal }) => {
                             </div>
                         </div>
                         <div className="col-12 col-md-8 col-lg-6">
-                            <div className="hero-bottom-data-img">
-                                <img className='img-fluid' src={HeroHomeImg} alt="" />
+                            <div className="hero-bottom-data-images">
+                                <div className="hero-bottom-data-img">
+                                    <img className='img-fluid' src={HeroHomeImg} alt="" />
+                                </div>
+                                <div className="hero-bottom-data-shadow">
+                                    <img className='img-fluid' src={HeroHomeImgCircle} alt="" />
+                                </div>
                             </div>
                         </div>
                         <div className="col-12 col-md-6 col-lg-3">
@@ -150,41 +234,42 @@ const Home = ({ openModal }) => {
                         </div>
                     </div>
                 </>} />
-            </div>
-            <Brands />
+                <Brands />
 
-            <section className='ServicesCard'>
-                <div className="heading center">
-                    <h2>Lorem ipsum dolor sit amet consectetur</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-                <div className="container">
-                    <div className="ServicesCardMain">
-                        {servicesCardsData.map((data, idx) => {
-                            return <ServicesCard key={idx} heading={data.heading} para={data.para} icon={data.icon} img={data.img} />
-                        })}
-
+                <section className='ServicesCard'>
+                    <div className="heading center">
+                        <h2>Lorem ipsum dolor sit amet consectetur</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     </div>
-                </div>
+                    <div className="container">
+                        <div className="ServicesCardMain">
+                            {servicesCardsData.map((data, idx) => {
+                                return <ServicesCard key={idx} heading={data.heading} para={data.para} icon={data.icon} img={data.img} />
+                            })}
 
-            </section>
-            {/* <Sec2 /> */}
+                        </div>
+                    </div>
 
-            <Sec3 heading={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore."} para={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."} openModal={openModal} />
+                </section>
+                {/* <Sec2 /> */}
 
-            <section className="Review">
-                <div className="heading center">
-                    <h2>Lorem ipsum dolor</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                </div>
-                {/* <Container> */}
-                <ReviewCard data={reviewData} />
-                {/* </Container> */}
-            </section>
+                <Sec3 heading={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore."} para={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."} openModal={openModal} />
 
-            <Counter />
+                <section className="Review">
+                    <div className="heading center">
+                        <h2>Lorem ipsum dolor</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                    {/* <Container> */}
+                    <ReviewCard data={reviewData} />
+                    {/* </Container> */}
+                </section>
 
-            <FooterForm />
+                <Counter />
+
+                <FooterForm />
+            </div>
+
         </>
     )
 }
