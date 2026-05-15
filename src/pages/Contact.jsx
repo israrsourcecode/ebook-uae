@@ -65,7 +65,27 @@ const Contact = () => {
 
 
 
+      // --- FOOTER SECTION TIMELINE ---
+      const contact = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".contact", // The main container
+          start: "top 80%",
+          toggleActions: "play none none none",
+        }
+      });
 
+      contact.from(".contactFrom", {
+        y: 40,            // Slides UP from 40px below
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out"
+      })
+        .from(".contactImg", {
+          y: 40,            // Slides UP from 40px below
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out"
+        }, "-=0.7"); // This "-=0.7" creates a slight overlap so they feel connected
 
 
 

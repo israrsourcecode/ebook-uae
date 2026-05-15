@@ -251,6 +251,10 @@ header {
   transform: scaleY(-1);
 }
 
+.hero-bottom-data-images{
+  width: 70%;
+  margin:auto;
+}
 /* Hero Secondary */
 .secondary-hero h1 {
   text-align: center;

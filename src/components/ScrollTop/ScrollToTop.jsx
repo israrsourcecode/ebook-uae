@@ -5,17 +5,18 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // 1. Standard browser scroll
+    // 1. Reset standard browser scroll
     window.scrollTo(0, 0);
-    
-    // 2. Lenis scroll (with a slight delay to ensure the page has rendered)
-    const timer = setTimeout(() => {
-        if (window.lenis) {
-            window.lenis.scrollTo(0, { immediate: true });
-        }
-    }, 10);
 
-    return () => clearTimeout(timer);
+    // 2. Handle Lenis reset
+    if (window.lenis) {
+      // Jump to top immediately
+      window.lenis.scrollTo(0, { immediate: true });
+      
+      // Force Lenis to recalculate page height immediately
+      // This solves issues where a long page transitions to a short page
+      window.lenis.resize();
+    }
   }, [pathname]);
 
   return null;
