@@ -120,7 +120,7 @@ header {
 
 
 /* Optional: Smooth transition for hover */
-.dropdown-menu {}
+/* .dropdown-menu {} */
 
 
 /* The Active State */
@@ -175,7 +175,14 @@ header {
 }
 
 
-
+/* Navbar Mobile Size */
+.navbar-toggler {
+  background: var(--primary-gradient);
+  border: none;
+}
+.pill-scrolled .navbar-toggler {
+  background: var(--secondary-gradient);
+}
 
 
 /* Hero */
@@ -251,10 +258,11 @@ header {
   transform: scaleY(-1);
 }
 
-.hero-bottom-data-images{
+.hero-bottom-data-images {
   width: 70%;
-  margin:auto;
+  margin: auto;
 }
+
 /* Hero Secondary */
 .secondary-hero h1 {
   text-align: center;
@@ -408,7 +416,9 @@ header {
   max-width: 600px;
   transition: all 0.3s ease-in-out;
 
-
+.serviceCardLeft{
+  display: flex;
+}
   .ServicesCardIcon {
     padding: 20px 10px;
 
@@ -422,12 +432,12 @@ header {
   }
 
   .ServicesCardData {
-    width: 50%;
+    /* width: 50%; */
     padding: 20px 0;
   }
 
   .ServicesCardImg {
-    width: 50%;
+    width: 100%;
     margin-top: -46px;
     margin-bottom: -6px;
   }

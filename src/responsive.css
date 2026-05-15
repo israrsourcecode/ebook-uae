@@ -17,4 +17,158 @@
 
 
 /*  Small Mobile  */
-@media (max-width: 575px) {}
+@media (max-width: 575px) {
+    .custom-nav-wrapper .container {
+        flex-wrap: nowrap;
+    }
+
+
+    .glass-nav-container .nav-item.show .nav-link {
+        color: white !important;
+        width: fit-content !important;
+        margin: auto;
+        margin-top: 8px;
+        /* Adds a modern look to the highlight */
+    }
+
+    .navbar-nav .dropdown-menu {
+        background: var(--primary-gradient);
+        border: none;
+
+        .dropdown-item {
+            color: #fff;
+            text-align: center;
+        }
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .offcanvas {
+        background-color: var(--secondary) !important;
+        /* Matches your brand green */
+        color: white;
+    }
+
+    /* Ensure nav links stack nicely in the drawer */
+    .glass-nav-container {
+        flex-direction: column;
+        background: transparent !important;
+        border: none !important;
+        backdrop-filter: none;
+
+    }
+
+
+    /* Heading */
+    .heading {
+        width: fit-content;
+        padding: 0 10px;
+
+        h2 {
+            font-size: 1.8rem;
+            line-height: 26px;
+            padding-bottom: 8px;
+        }
+    }
+
+    /* Hero */
+    .hero {
+        padding-top: 118px;
+        background: var(--secondary);
+        text-align: center;
+        width: 100%;
+    }
+
+    .hero.primary-hero {
+        background-image: none;
+        margin: 0;
+
+        h1 {
+            font-size: 2.4rem;
+        }
+    }
+
+
+    .hero-bottom-data-left {
+        margin-bottom: 50px;
+
+        p {
+            font-size: 1rem !important;
+            line-height: 22px !important;
+        }
+    }
+
+
+
+
+    .primary-hero .hero-bottom-data-right p {
+        font-size: 1rem;
+    }
+
+    .hero-bottom-data-right i {
+        font-size: 1.8rem !important;
+    }
+
+    .hero-bottom-top-quote {
+        text-align: left;
+    }
+
+    .hero .btn.white.hero-bottom-btn {
+        position: unset;
+        margin-top: 20px;
+        font-size: 1rem;
+    }
+
+
+    /* Brand Review */
+    .brand-section {
+        height: 200px;
+    }
+
+    .white-belt {
+        transform: rotate(10deg);
+    }
+
+    .green-belt {
+        transform: rotate(-11deg);
+    }
+
+    .marquee-belt {
+        width: 120%;
+        padding: 14px 0;
+    }
+
+    .brand-item {
+        flex-shrink: 0;
+        padding: 0 6px;
+
+        img {
+            height: 22px;
+        }
+    }
+
+    /* Services Card */
+    .ServiceCard {
+        flex-direction: column-reverse;
+
+        .serviceCardLeft {
+            text-align: center;
+            .ServicesCardIcon{
+                display: none;
+            }
+        }
+
+        .ServicesCardImg {
+            width: 50%;
+            margin: auto;
+            margin-top: -46px;
+
+            img {
+                width: 100%;
+            }
+        }
+
+    }
+}

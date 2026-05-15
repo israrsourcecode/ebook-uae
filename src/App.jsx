@@ -4,6 +4,7 @@ import Lenis from '@studio-freight/lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css'
+import './responsive.css'
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
